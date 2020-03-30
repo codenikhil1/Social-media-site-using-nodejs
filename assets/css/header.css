@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: coral;
+  flex-direction: row;
+  font-size: 1rem;
+  font-weight: 600;
+  justify-content: space-between;
+  background-color: lightgray; }
+  header ul {
+    margin-top: auto;
+    display: ruby;
+    list-style: none; }
+    header ul li {
+      margin-right: 20px;
+      margin-left: 25px; }
