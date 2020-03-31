@@ -1,57 +1,25 @@
 
-        <h1>
-            Codeial / <%= title %>
-        </h1>
+<h1>
+    Codeial / <%= title %>
+</h1>
+
+
 <section id="feed-posts">
-    <h4>
-        Posts
-    </h4>
-    <% if(locals.user) {%>
+    <h4>Posts</h4>
+    <% if(locals.user){ %>
     <form action="/posts/create" id="new-post-form" method="POST">
-        <textarea name="content" cols="30" rows="3" placeholder="type here.."></textarea>
+        <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
         <input type="submit" value="Post">
     </form>
-    <%}%>
-    <div id="post-list-container">
-        <ul>
-            <% for(posts of posts){%>
-                <li>
-                  <p>
-                    <%=  posts.content %>
-                    <br>
-                    <small>
-                        <%= posts.user.name %>
-                    </small>
-                  </p>
-                  <div class="post-comment">
-                      <% if(locals.user){ %>
-                          <form action="/comment/create" method="POST">
-                            <input type="text" name="content" placeholder="add comment..">
-                            <input type="hidden" name="post" value="<%= posts._id %>" >
-                            <input type="submit" value ="Add comment">
+    <% } %>
 
-                          </form>
-                        
-                        
-                        <%}%>
-                       <div class="post-commets-list">
-                           <ul id="post-comments-<%= posts._id%>" >
-                               <% for(comment of posts.comments) {%>
-                                <p>
-                                    <%= comment.content%>
-                                    <br>
-                                    <small>
-                                        <%= comment.user.name %>
-                                    </small>
-                                </p>
-                                <%}%>
-                           </ul>
-                          
-                       </div> 
-                  </div>
-                </li>
-            <%}%>
+    <div id="posts-list-container">
+        <ul>
+            <% for(post of posts){ %>
+                
+           <%- include('_posts.ejs')-%>
+                
+            <%} %>
         </ul>
     </div>
-
 </section>
